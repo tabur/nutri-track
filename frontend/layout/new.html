@@ -15,7 +15,7 @@
       <form  class="form-control-sm">
         <legend class="form-legend">Food information</legend>
         <div class=" form-group col-6">
-          <label for="brand" class="form-label">Brand</label>
+          <label for="brand" class="form-label">Manufacturer / Brand</label>
           <input type="text" class="form-control" name="brand" id="brand" placeholder="">
         </div>
       
@@ -30,9 +30,11 @@
           <div class="col-4">
             <div class="form-row form-group mb-2">
               <label for="" class="col-form-label">Energy</label>
-              <input type="text" class="form-control ml-auto col-2" name="calories" id="calories" placeholder="Kcal">
+              <input type="text" class="form-control ml-auto col-2" name="joules" id="joules" placeholder="Joules">
+              <input type="text" class="form-control ml-4 col-2" name="calories" id="calories" placeholder="Kcal">
+              
             </div>
-            <fieldset class="">
+            <fieldset class="carbset">
               <div class="form-row form-group mb-2">
                 <label for="" class="col-form-label ">Total Carbohydrates</label>
                 <input type="text" class="form-control ml-auto col-2" name="carbs" id="carbs" placeholder="g">
@@ -52,7 +54,7 @@
                 <label for="" class="col-form-label">Protein</label>
                 <input type="text" class="form-control ml-auto col-2" name="protein" id="protein" placeholder="g">
             </div>  
-            <fieldset class="">
+            <fieldset class="fatset">
               <div class="form-row form-group mb-2">
                 <label for="" class="col-form-label">Total Fat</label>
                 <input type="text" class="form-control ml-auto col-2" name="fat" id="fat" placeholder="g">
