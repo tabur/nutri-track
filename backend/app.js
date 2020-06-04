@@ -49,6 +49,42 @@ app.delete("/api/food/:id",function(req,res) {
 	return res.status(404).json({message:"not found"})
 })
 
+
+//Laiton et tarvii olla energy ja manufacturer et voi muokata.
+app.put("/api/food/:id",function(req,res) {
+    let tempId = parseInt(req.params.id,10);
+    if(!req.body){
+        return res.status(422).json({message:"provide required data"})
+    }
+
+    if(!req.body.energy || !req.body.manufacturer){
+        return res.status(422).json({message:"provide required data"})
+    }
+    if(req.body.energy.length === 0 || req.body.manufacturer.length === 0){
+        return res.status(422).json({message:"provide required data"})
+    }
+
+    let food = {
+        manufacturer:req.body.manufacturer,
+        description:req.body.description,
+        energy:req.body.energy,
+        carbs:req.body.carbs,
+        sugar:req.body.sugar,
+        fiber:req.body.fiber,
+        fat:req.body.fat,
+        saturated:req.body.saturated,
+        unsaturated:req.body.unsaturated,
+        protein:req.body.protein,
+        salt:req.body.salt,   
+    }
+    for(let i=0;i<database.length;i++){
+        if (database[i].id === tempId){
+            database.splice(i,1,food);
+            return res.status(200).json({message:"success"})
+        }
+    }
+    return res.status(404).json({message:"not found"})
+})
 app.listen(port);
 
 console.log("Running in port:"+port);
