@@ -4,6 +4,8 @@ import React from 'react';
 class App extends React.Component {
 	constructor(props) {
     super(props);
+
+    // tilapäinen säilö
     this.state = {
 			list:[],
 			food:{}
@@ -28,6 +30,8 @@ class App extends React.Component {
 		this.loadFromStorage();
 	}
   
+  // REST - edit toistaiseksi puuttuu
+
   getFoodList = () => {
 		let request = {
 			method:"GET",
@@ -60,7 +64,7 @@ class App extends React.Component {
 		}
 		fetch("/api/food/"+id,request).then(response => {
 			if(response.ok) {
-				console.log("removed:", {id});
+				console.log("food removed:", {id});
 			} else {
 				console.log("Server responded with status:",response.status)
 			}
