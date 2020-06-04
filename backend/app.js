@@ -50,15 +50,16 @@ app.delete("/api/food/:id",function(req,res) {
 })
 
 app.post("/api/food",function(req,res) {
-        if(!req.body) {
-            return res.status(422).json({message:"provide required data"})
-        }
-        if(!req.body.firstname || !req.body.lastname) {
-            return res.status(422).json({message:"provide required data"})
-        }
-        if(req.body.firstname.length === 0 || req.body.lastname.length ===0) {
-            return res.status(422).json({message:"provide required data"})
-        }
+    if(!req.body){
+        return res.status(422).json({message:"provide required data"})
+    }
+
+    if(!req.body.energy || !req.body.manufacturer){
+        return res.status(422).json({message:"provide required data"})
+    }
+    if(req.body.energy.length === 0 || req.body.manufacturer.length === 0){
+        return res.status(422).json({message:"provide required data"})
+    }
         let food = {
             manufacturer:req.body.manufacturer,
             description:req.body.description,
