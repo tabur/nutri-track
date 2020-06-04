@@ -19,7 +19,7 @@ Data structure
 let food = {
     manufacturer:String,
     description:String,
-    energy:number,
+    energy: number,
     carbs: number,
     sugar: number,
     fiber: number,
@@ -28,6 +28,7 @@ let food = {
     unsaturated: number,
     protein: number,
     salt: number,
+    id: number
 }
 */
 
@@ -35,6 +36,17 @@ let food = {
 
 app.get("/api/food",function(req,res) {
 	return res.status(200).json(database);
+})
+
+app.delete("/api/food/:id",function(req,res) {
+	let tempId = parseInt(req.params.id,10);
+	for(let i=0;i<database.length;i++) {
+		if(database[i].id === tempId) {
+			database.splice(i,1);
+			return res.status(200).json({message:"success"})
+		}
+	}
+	return res.status(404).json({message:"not found"})
 })
 
 app.listen(port);
