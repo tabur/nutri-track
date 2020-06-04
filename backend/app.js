@@ -74,7 +74,7 @@ app.post("/api/food",function(req,res) {
             salt:req.body.salt,
             id:id++
         }
-        database.push(contact);
+        database.push(food);
         console.log(database);
         return res.status(200).json({message:"success"})
 })
