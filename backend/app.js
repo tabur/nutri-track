@@ -33,6 +33,10 @@ let food = {
 
 //REST API
 
+app.get("/api/food",function(req,res) {
+	return res.status(200).json(database);
+})
+
 app.listen(port);
 
 console.log("Running in port:"+port);
