@@ -1,5 +1,7 @@
 import React from 'react';
-
+import logo from './logo.svg';
+import './App.css';
+import AddFood from './components/AddFood';
 
 class App extends React.Component {
 	constructor(props) {
@@ -46,17 +48,17 @@ class App extends React.Component {
 					})
 					this.saveToStorage();
 				}).catch(error => {
-					console.log("Failed to parse JSON data:",error)
+					console.log("Failed to parse JSON data:",error);
 				})
 			} else {
-				console.log("Server responded with status:",response.status) 
+				console.log("Server responded with status:",response.status);
 			}
 		}).catch(error => {
 			console.log("Server responded with an error:",error);
 		})
 	}
   
-	removeFromList = (id) => {
+	removeFoodFromList = (id) => {
 		let request = {
 			method:"DELETE",
 			mode:"cors",
@@ -66,7 +68,7 @@ class App extends React.Component {
 			if(response.ok) {
 				console.log("food removed:", {id});
 			} else {
-				console.log("Server responded with status:",response.status)
+				console.log("Server responded with status:",response.status);
 			}
 		}).catch(error => {
 			console.log(error);
@@ -89,6 +91,16 @@ class App extends React.Component {
 		}).catch(error => {
 			console.log(error);
 		})
-	}
+  }
+  
+  render() {
+    return(
+      <div className="App">
+        <AddFood></AddFood>
+      </div>
+      
+    );
+  }
 }
 
+export default App;

@@ -22,8 +22,11 @@
   },
   "homepage": "https://github.com/tabur/nutri-track#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    
+    "express": "^4.17.1"
+    
+  },
+  "devDependencies": {
+    
   }
 }
