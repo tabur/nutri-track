@@ -35,5 +35,6 @@
   },
   "devDependencies": {
     "parcel": "^1.12.4"
-  }
+  },
+  "proxy":"http://localhost:3001"
 }

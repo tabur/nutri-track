@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 
 class AddFood extends React.Component {
-/* 
+
 	constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +26,7 @@ class AddFood extends React.Component {
 
   }
 
+  //tarvitaan että kenttiin tulee näkymään niihin kirjotetut arvot kun kentän teksti tulee statesta
   onChange = (event) => {
 		let state = {}
 		state[event.target.name] = event.target.value
@@ -33,27 +34,61 @@ class AddFood extends React.Component {
 	}
 
   onSubmit = (event) => {
-		event.preventDefault();
+    event.preventDefault();
+    
+		let food = {
+      manufacturer:this.state.manufacturer,
+      description:this.state.description,
+      energy:this.state.energy,
+      carbs:this.state.carbs,
+      sugar:this.state.sugar,
+      fiber:this.state.fiber,
+      fat:this.state.fat,
+      saturated:this.state.saturated,
+      unsaturated:this.state.unsaturated,
+      protein:this.state.protein,
+      salt:this.state.salt
+		}
+		
+		this.props.addFood(food);
+		
+		this.setState({
+      manufacturer:"",
+      description:"",
+      energy:"",
+      carbs:"",
+      sugar:"",
+      fiber:"",
+      fat:"",
+      saturated:"",
+      unsaturated:"",
+      protein:"",
+      salt:""
+		});
 
   }
- */
+ 
+  submit = (event) => {
+		event.preventDefault();
+	}
+
   render() {
     return (
       <Container>
  
-         <Form size="sm">
+         <Form size="sm" onSubmit={this.submit}>
           
           <legend>Food information</legend>
           <Col md={6}>
           <Form.Group>
-            <Form.Label htmlFor="brand">Manufacturer / Brand</Form.Label>
-            <Form.Control type="text" name="brand" id="brand" placeholder="" />
+            <Form.Label htmlFor="manufacturer">Manufacturer / Brand</Form.Label>
+            <Form.Control type="text" name="manufacturer" id="manufacturer" onChange={this.onChange} value={this.state.manufacturer} placeholder="" />
           </Form.Group>
           </Col>
           <Col md={6}>
             <Form.Group>
               <Form.Label htmlFor="description">Food description</Form.Label>
-              <Form.Control type="text" name="description" id="description" placeholder="" />
+              <Form.Control type="text" name="description" id="description" onChange={this.onChange} value={this.state.description} placeholder="" />
             </Form.Group>
           </Col>
           
@@ -67,8 +102,8 @@ class AddFood extends React.Component {
               <Form.Group as={Row} controlId="Energy">
                 <Form.Label column md={4} htmlFor="">Energy</Form.Label>
                 <Col>
-                  <Form.Control ml="auto"  type="text" name="joules" id="joules" placeholder="Joules" />
-                  <Form.Control ml={4}  type="text" name="calories" id="calories" placeholder="Kcal" />
+                  <Form.Control ml="auto"  type="text" name="energy" id="joules" onChange={this.onChange} value={this.state.energy} placeholder="Joules" />
+                  <Form.Control ml={4}  type="text" name="calories" id="calories" placeholder="cal" />
                 </Col>
                 
               </Form.Group>
@@ -79,7 +114,7 @@ class AddFood extends React.Component {
                 <Form.Group as={Row}>
                   <Form.Label htmlFor="" column md={4}>Total Carbohydrates</Form.Label>
                   <Col md={4}>
-                    <Form.Control ml="auto" type="text" name="carbs" id="carbs" placeholder="g" />
+                    <Form.Control ml="auto" type="text" name="carbs" id="carbs" onChange={this.onChange} value={this.state.carbs} placeholder="g" />
                   </Col>
                 </Form.Group>
 
@@ -87,14 +122,14 @@ class AddFood extends React.Component {
                 <Form.Group as={Row}>
                   <Form.Label pl={4} column md={4} htmlFor="" >Sugar</Form.Label>
                   <Col md={4}>
-                    <Form.Control ml="auto" type="text" name="sugar" id="sugar" placeholder="g" />
+                    <Form.Control ml="auto" type="text" name="sugar" id="sugar" onChange={this.onChange} value={this.state.sugar} placeholder="g" />
                   </Col>
                 </Form.Group>
               
                 <Form.Group as={Row}>
                   <Form.Label pl={4} column md={4} htmlFor="">Fiber</Form.Label>
                   <Col md={4}>
-                    <Form.Control ml="auto" type="text" name="fiber" id="fiber" placeholder="g" />
+                    <Form.Control ml="auto" type="text" name="fiber" id="fiber" onChange={this.onChange} value={this.state.fiber} placeholder="g" />
                   </Col>
                 </Form.Group>
 
@@ -104,7 +139,7 @@ class AddFood extends React.Component {
             <Form.Group as={Row}>
               <Form.Label column md={4} htmlFor="">Protein</Form.Label>
               <Col>
-                <Form.Control ml="auto" type="text" name="protein" id="protein" placeholder="g" />
+                <Form.Control ml="auto" type="text" name="protein" id="protein" onChange={this.onChange} value={this.state.protein} placeholder="g" />
               </Col>
             </Form.Group>
 
@@ -112,31 +147,37 @@ class AddFood extends React.Component {
               <Form.Group as={Row}>
                 <Form.Label column md={4} htmlFor="">Total Fat</Form.Label>
                 <Col>
-                  <Form.Control ml="auto" type="text" name="fat" id="fat" placeholder="g" />
+                  <Form.Control ml="auto" type="text" name="fat" id="fat" onChange={this.onChange} value={this.state.fat} placeholder="g" />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row}>
                 <Form.Label column md={4} pl={4} htmlFor="">Saturated Fat</Form.Label>
                 <Col>
-                  <Form.Control ml="auto" type="text" name="fat-sat" id="fat-sat" placeholder="g" />
+                  <Form.Control ml="auto" type="text" name="saturated" id="saturated" onChange={this.onChange} value={this.state.saturated} placeholder="g" />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row}>
                 <Form.Label column md={4} pl={4} htmlFor="" >Unsaturated Fat</Form.Label>
                 <Col>
-                  <Form.Control ml="auto" type="text" name="fat-unsat" id="fat-unsat" placeholder="g" />
+                  <Form.Control ml="auto" type="text" name="unsaturated" id="unsaturated" onChange={this.onChange} value={this.state.unsaturated} placeholder="g" />
                 </Col>
               </Form.Group>
             </fieldset>
+            <Form.Group as={Row}>
+                <Form.Label column md={4} htmlFor="" >Salt</Form.Label>
+                <Col>
+                  <Form.Control ml="auto" type="text" name="salt" id="salt" onChange={this.onChange} value={this.state.salt} placeholder="g" />
+                </Col>
+              </Form.Group>
                
           </Col>
         </Row>
         <Form.Group as={Row} pt={3}>
           <Col md={10}>
-            <Button variant="success" type="submit" >Add new food</Button>
-            <Button variant="danger" type="cancel" >Cancel</Button>
+            <Button variant="success" onClick={this.onSubmit}>Add new food</Button>
+            <Button variant="danger" >Cancel</Button>
           </Col>
         </Form.Group>
         
