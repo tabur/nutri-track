@@ -104,7 +104,8 @@ app.put("/api/food/:id",function(req,res) {
         saturated:req.body.saturated,
         unsaturated:req.body.unsaturated,
         protein:req.body.protein,
-        salt:req.body.salt,   
+        salt:req.body.salt,
+        id:tempId
     }
     for(let i=0;i<database.length;i++){
         if (database[i].id === tempId){
