@@ -76,14 +76,14 @@ class AddFood extends React.Component {
     return (
       <Container>
  
-         <Form size="sm" onSubmit={this.submit}>
+        <Form size="sm" onSubmit={this.submit}>
           
           <legend>Food information</legend>
           <Col md={6}>
-          <Form.Group>
-            <Form.Label htmlFor="manufacturer">Manufacturer / Brand</Form.Label>
-            <Form.Control type="text" name="manufacturer" id="manufacturer" onChange={this.onChange} value={this.state.manufacturer} placeholder="" />
-          </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="manufacturer">Manufacturer / Brand</Form.Label>
+              <Form.Control type="text" name="manufacturer" id="manufacturer" onChange={this.onChange} value={this.state.manufacturer} placeholder="" />
+            </Form.Group>
           </Col>
           <Col md={6}>
             <Form.Group>
@@ -96,87 +96,82 @@ class AddFood extends React.Component {
           <hr />
 
           <legend>Nutrition per 100g</legend>
-          <Row>
-          <Col column md={4}>
-            <Row>
+          <Row className="ml-0">
+            <Col md={6}>
               <Form.Group as={Row} controlId="Energy">
                 <Form.Label column md={4} htmlFor="">Energy</Form.Label>
-                <Col>
-                  <Form.Control ml="auto"  type="text" name="energy" id="joules" onChange={this.onChange} value={this.state.energy} placeholder="Joules" />
-                  <Form.Control ml={4}  type="text" name="calories" id="calories" placeholder="cal" />
+                <Col md={2} className="ml-auto">
+                  <Form.Control type="text" name="energy" id="joules" onChange={this.onChange} value={this.state.energy} placeholder="Joules" />
                 </Col>
-                
+                <Col md={2} className="">
+                  <Form.Control type="text" name="calories" id="calories" placeholder="cal" />
+                </Col>
               </Form.Group>
-            </Row>
             
-            <fieldset className="carbset">
-
+              <fieldset className="carbset">
                 <Form.Group as={Row}>
                   <Form.Label htmlFor="" column md={4}>Total Carbohydrates</Form.Label>
-                  <Col md={4}>
-                    <Form.Control ml="auto" type="text" name="carbs" id="carbs" onChange={this.onChange} value={this.state.carbs} placeholder="g" />
+                  <Col md={2} className="ml-auto">
+                    <Form.Control type="text" name="carbs" id="carbs" onChange={this.onChange} value={this.state.carbs} placeholder="g" />
                   </Col>
                 </Form.Group>
-
-              
                 <Form.Group as={Row}>
-                  <Form.Label pl={4} column md={4} htmlFor="" >Sugar</Form.Label>
-                  <Col md={4}>
-                    <Form.Control ml="auto" type="text" name="sugar" id="sugar" onChange={this.onChange} value={this.state.sugar} placeholder="g" />
+                  <Form.Label column md={4} htmlFor="" >Sugar</Form.Label>
+                  <Col md={2} className="ml-auto">
+                    <Form.Control type="text" name="sugar" id="sugar" onChange={this.onChange} value={this.state.sugar} placeholder="g" />
                   </Col>
                 </Form.Group>
-              
                 <Form.Group as={Row}>
-                  <Form.Label pl={4} column md={4} htmlFor="">Fiber</Form.Label>
-                  <Col md={4}>
-                    <Form.Control ml="auto" type="text" name="fiber" id="fiber" onChange={this.onChange} value={this.state.fiber} placeholder="g" />
+                  <Form.Label column md={4} htmlFor="">Fiber</Form.Label>
+                  <Col md={2} className="ml-auto">
+                    <Form.Control type="text" name="fiber" id="fiber" onChange={this.onChange} value={this.state.fiber} placeholder="g" />
+                  </Col>
+                </Form.Group>
+              </fieldset>
+            </Col>
+
+            <Col column md={6}>
+              <Form.Group as={Row}>
+                <Form.Label column md={4} htmlFor="">Protein</Form.Label>
+                <Col column md={2} className="ml-auto">
+                  <Form.Control type="text" name="protein" onChange={this.onChange} value={this.state.protein} placeholder="g" />
+                </Col>
+              </Form.Group>
+
+              <fieldset className="fatset">
+                <Form.Group as={Row}>
+                  <Form.Label column md={4} htmlFor="">Total Fat</Form.Label>
+                  <Col column md={2} className="ml-auto">
+                    <Form.Control type="text" name="fat" onChange={this.onChange} value={this.state.fat} placeholder="g" />
                   </Col>
                 </Form.Group>
 
-            </fieldset>
-          </Col>
-          <Col column md={4} ml={4}>
-            <Form.Group as={Row}>
-              <Form.Label column md={4} htmlFor="">Protein</Form.Label>
-              <Col>
-                <Form.Control ml="auto" type="text" name="protein" id="protein" onChange={this.onChange} value={this.state.protein} placeholder="g" />
-              </Col>
-            </Form.Group>
+                <Form.Group as={Row}>
+                  <Form.Label column md={4}htmlFor="">Saturated Fat</Form.Label>
+                  <Col column md={2} className="ml-auto">
+                    <Form.Control type="text" name="saturated" onChange={this.onChange} value={this.state.saturated} placeholder="g" />
+                  </Col>
+                </Form.Group>
 
-            <fieldset className="fatset">
+                <Form.Group as={Row}>
+                  <Form.Label column md={4} htmlFor="" >Unsaturated Fat</Form.Label>
+                  <Col column md={2} className="ml-auto">
+                    <Form.Control type="text" name="unsaturated" onChange={this.onChange} value={this.state.unsaturated} placeholder="g" />
+                  </Col>
+                </Form.Group>
+              </fieldset>
               <Form.Group as={Row}>
-                <Form.Label column md={4} htmlFor="">Total Fat</Form.Label>
-                <Col>
-                  <Form.Control ml="auto" type="text" name="fat" id="fat" onChange={this.onChange} value={this.state.fat} placeholder="g" />
-                </Col>
-              </Form.Group>
-
-              <Form.Group as={Row}>
-                <Form.Label column md={4} pl={4} htmlFor="">Saturated Fat</Form.Label>
-                <Col>
-                  <Form.Control ml="auto" type="text" name="saturated" id="saturated" onChange={this.onChange} value={this.state.saturated} placeholder="g" />
-                </Col>
-              </Form.Group>
-
-              <Form.Group as={Row}>
-                <Form.Label column md={4} pl={4} htmlFor="" >Unsaturated Fat</Form.Label>
-                <Col>
-                  <Form.Control ml="auto" type="text" name="unsaturated" id="unsaturated" onChange={this.onChange} value={this.state.unsaturated} placeholder="g" />
-                </Col>
-              </Form.Group>
-            </fieldset>
-            <Form.Group as={Row}>
-                <Form.Label column md={4} htmlFor="" >Salt</Form.Label>
-                <Col>
-                  <Form.Control ml="auto" type="text" name="salt" id="salt" onChange={this.onChange} value={this.state.salt} placeholder="g" />
-                </Col>
-              </Form.Group>
-               
-          </Col>
-        </Row>
-        <Form.Group as={Row} pt={3}>
+                  <Form.Label column md={4} htmlFor="" >Salt</Form.Label>
+                  <Col column md={2} className="ml-auto">
+                    <Form.Control type="text" name="salt" onChange={this.onChange} value={this.state.salt} placeholder="g" />
+                  </Col>
+                </Form.Group>
+                
+            </Col>
+          </Row>
+        <Form.Group as={Row} className="pt-3">
           <Col md={10}>
-            <Button variant="success" onClick={this.onSubmit}>Add new food</Button>
+            <Button className="mr-1" variant="success" onClick={this.onSubmit} >Add new food</Button>
             <Button variant="danger" >Cancel</Button>
           </Col>
         </Form.Group>

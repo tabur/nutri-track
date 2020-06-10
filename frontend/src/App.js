@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import AddFood from './components/AddFood';
+import NavBar from './components/NavBar';
 
 class App extends React.Component {
 	constructor(props) {
@@ -96,7 +97,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="App">
-        <AddFood addFood={this.addFood} />
+        <NavBar />
       </div>
       
     );
