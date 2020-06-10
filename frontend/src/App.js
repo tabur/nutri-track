@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import AddFood from './components/AddFood';
 import NavBar from './components/NavBar';
+import DayView from './components/DayView';
+import Container from 'react-bootstrap/Container';
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -98,6 +101,9 @@ class App extends React.Component {
     return(
       <div className="App">
         <NavBar />
+        <Container id="main-content" className="mt-3">
+          <DayView />
+        </Container>
       </div>
       
     );
