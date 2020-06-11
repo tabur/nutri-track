@@ -26,3 +26,16 @@ protein float,
 salt float
 );
 
+CREATE TABLE NutritrackUser (
+userid BIGSERIAL NOT NULL PRIMARY KEY,
+email varchar (100),
+password varchar (100),
+targetenergy float,
+targetprotein float,
+targetfat float,
+targetcarbs float,
+targetweight float,
+targetrate float,
+history varchar (1000),
+days DATE
+); 
