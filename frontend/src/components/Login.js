@@ -22,6 +22,14 @@ export default class Login extends React.Component {
     this.props.onLogin(user);
   }
 
+  
+  onChange = (event) => {
+    let state = {}
+    state[event.target.name] = event.target.value
+    this.setState(state);
+  }
+
+
   render() {
     return(
       <Row>
@@ -30,8 +38,8 @@ export default class Login extends React.Component {
         <Form>
           <Form.Label>Login</Form.Label>
           
-          <Form.Control type="text" value={this.state.username} onChange={this.onChange} placeholder="Email" />
-          <Form.Control type="password" value={this.state.password} onChange={this.onChange} placeholder="Password" />
+          <Form.Control type="text" name="username" value={this.state.username} onChange={this.onChange} placeholder="Email" />
+          <Form.Control type="password" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" />
           <div className="pt-2"><Button onClick={this.onLogin}>Login</Button></div>
         </Form>
         </Col>
