@@ -5,19 +5,6 @@ create database nutritrack;
 
 \c nutritrack;
 
-CREATE TABLE day (
-    dayid   BIGSERIAL NOT NULL PRIMARY KEY,
-    date    Date,	
-    mealid  BIGINT[]
-);
-
-CREATE TABLE meal (
-    mealid      BIGSERIAL NOT NULL PRIMARY KEY,
-    foodid      BIGINT[],
-    day         Date,		
-    amount      float
-);
-
 CREATE TABLE Food (
 foodid BIGSERIAL NOT NULL PRIMARY KEY,
 manufacturer VARCHAR(100),
@@ -33,6 +20,16 @@ protein float,
 salt float
 );
 
+CREATE TABLE History (
+historyid BIGSERIAL NOT NULL PRIMARY KEY,
+userId BIGINT,
+date Date,
+weight DATE,
+waist float,
+chest float,
+neck float
+);
+
 CREATE TABLE NutritrackUser (
 userid BIGSERIAL NOT NULL PRIMARY KEY,
 email varchar (100),
@@ -43,16 +40,19 @@ targetfat float,
 targetcarbs float,
 targetweight float,
 targetrate float,
-historyid BIGINT,
-days DATE
+days DATE,
+historyid BIGINT REFERENCES History (historyid)
 ); 
 
-CREATE TABLE History (
-HistoryID BIGSERIAL NOT NULL PRIMARY KEY,
-userId BIGINT,
-date Date,
-weight DATE,
-waist float,
-chest float,
-neck float
-); 
+CREATE TABLE meal (
+    mealid      BIGSERIAL NOT NULL PRIMARY KEY,
+    day         Date,		
+    amount      float,
+    foodid      BIGINT REFERENCES food (foodid)
+);
+
+CREATE TABLE day (
+    dayid       BIGSERIAL NOT NULL PRIMARY KEY,
+    date        Date,	
+    mealid      BIGINT REFERENCES meal (mealid)
+);
