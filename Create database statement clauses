@@ -5,9 +5,9 @@ create database nutritrack;
 
 \c nutritrack;
 
-REATE TABLE meal (
+CREATE TABLE meal (
     mealid     BIGSERIAL NOT NULL PRIMARY KEY,
-    food    BiGINT,
+    foodid    BIGINT,
     amount float
 );
 
@@ -36,6 +36,6 @@ targetfat float,
 targetcarbs float,
 targetweight float,
 targetrate float,
-history varchar (1000),
+historyid BIGINT,
 days DATE
 ); 
