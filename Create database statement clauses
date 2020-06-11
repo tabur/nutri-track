@@ -10,3 +10,19 @@ REATE TABLE meal (
     food    BiGINT,
     amount float
 );
+
+CREATE TABLE Food (
+foodid BIGSERIAL NOT NULL PRIMARY KEY,
+manufacturer VARCHAR(100),
+description VARCHAR(100),
+energy float,
+carbs float,
+sugar float,
+fiber float,
+fat float,
+saturated float,
+unsaturated float,
+protein float,
+salt float
+);
+
