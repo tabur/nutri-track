@@ -1,0 +1,12 @@
+psql -U postgres -h localhost
+
+create database nutritrack;
+\l
+
+\c nutritrack;
+
+REATE TABLE meal (
+    mealid     BIGSERIAL NOT NULL PRIMARY KEY,
+    food    BiGINT,
+    amount float
+);
