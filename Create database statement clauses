@@ -6,9 +6,10 @@ create database nutritrack;
 \c nutritrack;
 
 CREATE TABLE meal (
-    mealid     BIGSERIAL NOT NULL PRIMARY KEY,
-    foodid    BIGINT,
-    amount float
+    mealid      BIGSERIAL NOT NULL PRIMARY KEY,
+    foodid      BIGINT,
+    day         Date,		
+    amount      float
 );
 
 CREATE TABLE Food (
