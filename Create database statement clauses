@@ -56,3 +56,10 @@ CREATE TABLE day (
     date        Date,	
     mealid      BIGINT REFERENCES meal (mealid)
 );
+
+CREATE TABLE Sessiondata (
+     sessionid   BIGSERIAL NOT NULL PRIMARY KEY,	
+     username    varchar (100),
+     ttl         BIGINT,
+     token       varchar (100)
+);
