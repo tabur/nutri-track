@@ -5,9 +5,15 @@ create database nutritrack;
 
 \c nutritrack;
 
+CREATE TABLE day (
+    dayid   BIGSERIAL NOT NULL PRIMARY KEY,
+    date    Date,	
+    mealid  BIGINT[]
+);
+
 CREATE TABLE meal (
     mealid      BIGSERIAL NOT NULL PRIMARY KEY,
-    foodid      BIGINT,
+    foodid      BIGINT[],
     day         Date,		
     amount      float
 );
