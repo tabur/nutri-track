@@ -39,3 +39,13 @@ targetrate float,
 historyid BIGINT,
 days DATE
 ); 
+
+CREATE TABLE History (
+HistoryID BIGSERIAL NOT NULL PRIMARY KEY,
+userId BIGINT,
+date Date,
+weight DATE,
+waist float,
+chest float,
+neck float
+); 
