@@ -1,0 +1,43 @@
+const express = require("express");
+const port = 3000;
+
+const app = express();
+
+const db = require("./db");
+const { Router } = require("express");
+
+Router.get('/', (req, res) => {
+    db.any("SELECT * from meal;")
+    .then(rows => {
+        console.log(rows);
+        res.json(rows)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+})
+
+module.exports = router;
+
+// app.use(express.json());
+
+// const customerRouter = require("routes/customer");
+
+//app.use("/customers", customersRouter);
+
+
+// const {Client} = require('pg')
+// const client = new Client({
+//	user: "postgres",
+//	password: "",
+//	host: "localhost",
+//	port: 5432,
+//	database: "nutritrack"
+//})
+//
+//client.connect()
+//.then(() => console.log("connected succesfully"))
+//.then(() => client.query("select * from meal")  )
+//.then( results => console.table(results.rows) )
+//.catch(e => console.log(e))
+//.finally(() => client.end())
