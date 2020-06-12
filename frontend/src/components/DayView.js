@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 
 
 export default class DayView extends React.Component {
@@ -31,7 +32,7 @@ export default class DayView extends React.Component {
       <div>
         <Row id="date-button-row" className="pl-4 py-1 text-light">
             <Col md={3}></Col>
-              <div class="btn-group">
+              <div className="btn-group">
                 <Button className="bg-header text-light">&lt;</Button>
               </div>
             <Col md={4} id="date" className="align-self-center text-center p-2 mx-1 bg-header">
@@ -50,7 +51,7 @@ export default class DayView extends React.Component {
         </Row>
         {/* {diaryRow} */}
         <Row className="diary-item p-1 pl-4">
-          <Col md={3} className="cell"><a href="#">Add Item</a></Col><Col md={9} className="cell"></Col>
+          <Col md={3} className="cell"><Link to="/addmeal">Add Item</Link></Col><Col md={9} className="cell"></Col>
         </Row>
         <Row id="diary-total-numbers" className="py-1 pl-4 font-weight-bold bg-header text-light">
           <Col md={1} className="offset-3">Total</Col>

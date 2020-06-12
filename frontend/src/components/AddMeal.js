@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import {Link} from 'react-router-dom';
 
 
 class AddMeal extends React.Component {
@@ -110,9 +111,9 @@ class AddMeal extends React.Component {
             </div>
           </Form.Row>
           <Form.Row className="pt-2">
-            <Button type="submit" variant="primary" onClick={this.addFood}>Add New </Button>
+            <Link to="/addfood">Add New</Link>
             <div className="pl-2">
-              <Button type="submit" variant="primary" >Edit </Button>
+              <Link to="/editfood">Edit</Link>
             </div>
           </Form.Row>
           </Col>

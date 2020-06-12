@@ -14,7 +14,10 @@ export default class Login extends React.Component {
     }
   }
 
-  onLogin =() => {
+  onLogin =(event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     let user = {
       username: this.state.username,
       password: this.state.password
@@ -35,12 +38,12 @@ export default class Login extends React.Component {
       <Row>
         <Col md={3}></Col>
         <Col>
-        <Form>
+        <Form onSubmit={this.onLogin}>
           <Form.Label>Login</Form.Label>
           
           <Form.Control type="text" name="username" value={this.state.username} onChange={this.onChange} placeholder="Email" />
           <Form.Control type="password" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" />
-          <div className="pt-2"><Button onClick={this.onLogin}>Login</Button></div>
+          <div className="pt-2"><Button type="submit">Login</Button></div>
         </Form>
         </Col>
         <Col md={3}></Col>

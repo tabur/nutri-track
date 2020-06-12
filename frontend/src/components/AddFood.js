@@ -68,15 +68,11 @@ class AddFood extends React.Component {
 
   }
  
-  submit = (event) => {
-		event.preventDefault();
-	}
-
   render() {
     return (
       <Container>
  
-        <Form size="sm" onSubmit={this.submit}>
+        <Form size="sm">
           
           <legend>Food information</legend>
           <Col md={6}>

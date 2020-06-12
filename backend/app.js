@@ -127,7 +127,7 @@ app.post("/login",function(req,res){
                 }
                 loggedSessions.push(session);
                 console.log(loggedSessions);
-                return res.status(200).json({token:token})
+                return res.status(200).json({username:req.body.username, token:token})
             })
         }
     }
@@ -136,8 +136,8 @@ app.post("/login",function(req,res){
     }
 })
 app.post("/logout",function(req,res){
-    let toke = req.headers.token;
-    if(token){
+    let token = req.headers.token;
+    if(!token){
         return res.status(404).json({message:"not found"})
     }
     for(let i=0;i<loggedSessions.length;i++){
