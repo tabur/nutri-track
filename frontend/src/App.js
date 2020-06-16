@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import AddFood from './components/AddFood';
 import NavBar from './components/NavBar';
 import DayView from './components/DayView';
@@ -78,7 +79,6 @@ class App extends React.Component {
 						foodList:data
 					})
           this.saveToStorage();
-          console.log(data);
 				}).catch(error => {
 					console.error("Failed to parse JSON data:",error);
 				})
@@ -150,7 +150,6 @@ class App extends React.Component {
 		fetch("/api/food",request).then(response => {
       this.setLoadingState(false);
 			if(response.ok) {
-        console.log("food added:", {food});
         this.props.history.push("/addmeal");
 			} else {
 				console.log("Server responded with status:",response.status);
@@ -175,7 +174,6 @@ class App extends React.Component {
 		fetch("/api/meal",request).then(response => {
       this.setLoadingState(false);
 			if(response.ok) {
-        console.log("meal added:", {newMeal});
         this.props.history.push("/diary");
 			} else {
 				console.log("Server responded with status:",response.status);
@@ -197,8 +195,6 @@ class App extends React.Component {
 			this.setLoadingState(false);
       if(response.ok) {
         this.getMeals();
-        console.log("Meal removed:", {id});
-        
 			} else {
 				console.log("Server responded with status:",response.status);
 			}
@@ -270,7 +266,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.foodList);
     return(
       <div className="App">
         <NavBar username={this.state.username} isLogged={this.state.isLogged}

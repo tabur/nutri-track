@@ -16,17 +16,26 @@ export default class DayView extends React.Component {
   }
   
   render(){
-
-    let diaryRow = this.props.meals.map(meal => 
-      <Row key={meal.id} id={meal.id} className="diary-item p-1 pl-4">
+    let diaryRow = this.props.meals.map((meal, i) => 
+      (i%2===0) ?
+      (<Row key={meal.id} id={meal.id} className="diary-item p-1 pl-4 bg-light">
         <Col md={3} className="cell">{meal.food.manufacturer} {meal.food.description}</Col>
         <Col md={1} className="cell">{meal.amount} g</Col>
-        <Col md={1} id="energy" className="cell pr-2">{meal.food.energy*(meal.amount/100)}</Col>
+        <Col md={1} id="energy" className="cell pr-1">{meal.food.energy*(meal.amount/100)}</Col>
         <Col md={1} id="carbs" className="cell">{meal.food.carbs*(meal.amount/100)} g</Col>
         <Col md={1} id="fat" className="cell">{meal.food.fat*(meal.amount/100)} g</Col>
         <Col md={1} id="protein" className="cell">{meal.food.protein*(meal.amount/100)} g</Col>
         <Col md={1}><a href="#" onClick={() => this.props.removeMeal(meal.id)} className="text-danger font-weight-bold">X</a></Col>
-      </Row>
+      </Row>):
+      (<Row key={meal.id} id={meal.id} className="diary-item p-1 pl-4">
+        <Col md={3} className="cell">{meal.food.manufacturer} {meal.food.description}</Col>
+        <Col md={1} className="cell">{meal.amount} g</Col>
+        <Col md={1} id="energy" className="cell pr-1">{meal.food.energy*(meal.amount/100)}</Col>
+        <Col md={1} id="carbs" className="cell">{meal.food.carbs*(meal.amount/100)} g</Col>
+        <Col md={1} id="fat" className="cell">{meal.food.fat*(meal.amount/100)} g</Col>
+        <Col md={1} id="protein" className="cell">{meal.food.protein*(meal.amount/100)} g</Col>
+        <Col md={1}><a href="#" onClick={() => this.props.removeMeal(meal.id)} className="text-danger font-weight-bold">X</a></Col>
+      </Row>)
     )
 
     return(
@@ -44,7 +53,7 @@ export default class DayView extends React.Component {
         <Row id="diary-headings" className="py-1 pl-4 font-weight-bold bg-header text-light rounded-top">
           <Col md={3}>Name</Col>
           <Col md={1}>Weight</Col>
-          <Col md={1} className="pr-2">Energy</Col>
+          <Col md={1} className="pr-1">Energy</Col>
           <Col md={1}>Carbs</Col>
           <Col md={1}>Fat</Col>
           <Col md={1}>Protein</Col>
@@ -56,10 +65,10 @@ export default class DayView extends React.Component {
         </Row>
         <Row id="diary-total-numbers" className="py-1 pl-4 font-weight-bold bg-header text-light">
           <Col md={1} className="offset-3">Total</Col>
-          <Col md={1} className="pr-2">{this.props.meals.reduce((a, v) => a + v.food.energy*(v.amount/100), 0)} kJ</Col>
-          <Col md={1}>{this.props.meals.reduce((a, v) => a + v.food.carbs*(v.amount/100), 0)} g</Col>
-          <Col md={1}>{this.props.meals.reduce((a, v) => a + v.food.fat*(v.amount/100), 0)} g</Col>
-          <Col md={1}>{this.props.meals.reduce((a, v) => a + v.food.protein*(v.amount/100), 0)} g</Col>
+          <Col md={1} className="pr-1">{this.props.meals.reduce((a, v) => a + v.food.energy*(v.amount/100), 0).toFixed(1)} kJ</Col>
+          <Col md={1}>{this.props.meals.reduce((a, v) => a + v.food.carbs*(v.amount/100), 0).toFixed(1)} g</Col>
+          <Col md={1}>{this.props.meals.reduce((a, v) => a + v.food.fat*(v.amount/100), 0).toFixed(1)} g</Col>
+          <Col md={1}>{this.props.meals.reduce((a, v) => a + v.food.protein*(v.amount/100), 0).toFixed(1)} g</Col>
         </Row>
       </div>
     )

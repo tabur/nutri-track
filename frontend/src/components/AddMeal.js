@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import {Link} from 'react-router-dom';
 
 
+
 class AddMeal extends React.Component {
   constructor(props) {
     super(props);
@@ -45,6 +46,8 @@ class AddMeal extends React.Component {
   }
 
   render() {
+
+    
     let foodRow = this.props.foodList.map(food =>
       <option key={food.id} value={food.id}>{food.manufacturer} {food.description}</option>
     )
@@ -124,53 +127,57 @@ class AddMeal extends React.Component {
 
 
     return(
-      <Form size="sm" onSubmit={this.onSubmit}>
-        <Form.Row>
-          <Col>
+      <div>
+        <h2>Add Meal</h2>
+        <Form size="sm" onSubmit={this.onSubmit}>
           <Form.Row>
             <Col>
-              <Form.Label>Search</Form.Label>
-              <Form.Control type="text" name="search" value={this.state.searchterm} onChange={this.onSearch}/>
+            {/* <Form.Row>
+              <Col>
+                <Form.Label>Search</Form.Label>
+                <Form.Control type="text" name="search" value={this.state.searchterm} onChange={this.onSearch}/>
+              </Col>
+            </Form.Row> */}
+            <Form.Row className="pt-2">
+              <Form.Group as={Col} className="pl-0 ml-0">
+                <Form.Label>Food</Form.Label>
+                <Form.Control as="select" value={this.state.value} onChange={this.selectFood}>
+                  <option>select food item</option>
+                  {foodRow}
+                </Form.Control>
+              </Form.Group>
+            </Form.Row>
             </Col>
-          </Form.Row>
-          <Form.Row className="pt-2">
-            <Col>
-              <Form.Control as="select" value={this.state.value} onChange={this.selectFood}>
-                <option></option>
-                {foodRow}
-              </Form.Control>
-            </Col>
-          </Form.Row>
-          </Col>
-        <Col>
-        <Form.Row className="pl-2">
           <Col>
-          <Form.Row>
-            <Form.Group as={Col} md={3} className="pl-0 ml-0">
-              <Form.Label>Amount</Form.Label>
-              <Form.Control type="text" name="amount" value={this.state.amount} placeholder="g" onChange={this.onChange} />
-            </Form.Group>
-            
-          </Form.Row>
+          <Form.Row className="pl-2 pt-2">
+            <Col>
+            <Form.Row>
+              <Form.Group as={Col} md={3} className="pl-0 ml-0">
+                <Form.Label>Amount</Form.Label>
+                <Form.Control type="text" name="amount" value={this.state.amount} placeholder="g" onChange={this.onChange} />
+              </Form.Group>
+              
+            </Form.Row>
 
-          {foodStats}
-          <Form.Row>
-            <Button type="submit" variant="success" onClick={this.onSubmit}>OK</Button>
-            <div className="pl-2">
-              <Button type="submit" variant="danger" onClick={this.cancel}>Cancel </Button>
-            </div>
-          </Form.Row>
-          <Form.Row className="pt-2">
-            <Link to="/addfood">Add New</Link>
-            <div className="pl-2">
-              <Link to="/editfood">Edit</Link>
-            </div>
+            {foodStats}
+            <Form.Row>
+              <Button type="submit" variant="success" onClick={this.onSubmit}>OK</Button>
+              <div className="pl-2">
+                <Link to="/"><Button variant="danger">Cancel</Button> </Link>
+              </div>
+            </Form.Row>
+            <Form.Row className="pt-2">
+              <Link to="/addfood"><Button variant="primary">Add food</Button></Link>
+              {/* <div className="pl-2">
+                <Link to="/editfood"><Button variant="primary">Edit</Button></Link>
+              </div> */}
+            </Form.Row>
+            </Col>
           </Form.Row>
           </Col>
-        </Form.Row>
-        </Col>
-        </Form.Row>
-      </Form>
+          </Form.Row>
+        </Form>
+      </div>
     )
   }
 }

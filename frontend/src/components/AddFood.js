@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 
 
 class AddFood extends React.Component {
@@ -26,7 +27,6 @@ class AddFood extends React.Component {
 
   }
 
-  //tarvitaan että kenttiin tulee näkymään niihin kirjotetut arvot kun kentän teksti tulee statesta
   onChange = (event) => {
 		let state = {}
 		state[event.target.name] = event.target.value
@@ -71,7 +71,8 @@ class AddFood extends React.Component {
   render() {
     return (
       <Container>
- 
+        <h2>Add Food</h2>
+
         <Form size="sm">
           
           <legend>Food information</legend>
@@ -94,10 +95,10 @@ class AddFood extends React.Component {
           <legend>Nutrition per 100g</legend>
           <Row className="ml-0">
             <Col md={6}>
-              <Form.Group as={Row} controlId="Energy">
-                <Form.Label column md={4} htmlFor="">Energy</Form.Label>
+              <Form.Group as={Row} >
+                <Form.Label  md={4} htmlFor="">Energy</Form.Label>
                 <Col md={2} className="ml-auto">
-                  <Form.Control type="text" name="energy" id="joules" onChange={this.onChange} value={this.state.energy} placeholder="Joules" />
+                  <Form.Control type="text" name="energy" id="energy" onChange={this.onChange} value={this.state.energy} placeholder="Joules" />
                 </Col>
                 <Col md={2} className="">
                   <Form.Control type="text" name="calories" id="calories" placeholder="cal" />
@@ -106,19 +107,19 @@ class AddFood extends React.Component {
             
               <fieldset className="carbset">
                 <Form.Group as={Row}>
-                  <Form.Label htmlFor="" column md={4}>Total Carbohydrates</Form.Label>
+                  <Form.Label htmlFor=""  md={4}>Total Carbohydrates</Form.Label>
                   <Col md={2} className="ml-auto">
                     <Form.Control type="text" name="carbs" id="carbs" onChange={this.onChange} value={this.state.carbs} placeholder="g" />
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                  <Form.Label column md={4} htmlFor="" >Sugar</Form.Label>
+                  <Form.Label  md={4} htmlFor="" >Sugar</Form.Label>
                   <Col md={2} className="ml-auto">
                     <Form.Control type="text" name="sugar" id="sugar" onChange={this.onChange} value={this.state.sugar} placeholder="g" />
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                  <Form.Label column md={4} htmlFor="">Fiber</Form.Label>
+                  <Form.Label  md={4} htmlFor="">Fiber</Form.Label>
                   <Col md={2} className="ml-auto">
                     <Form.Control type="text" name="fiber" id="fiber" onChange={this.onChange} value={this.state.fiber} placeholder="g" />
                   </Col>
@@ -126,39 +127,39 @@ class AddFood extends React.Component {
               </fieldset>
             </Col>
 
-            <Col column md={6}>
+            <Col md={6}>
               <Form.Group as={Row}>
-                <Form.Label column md={4} htmlFor="">Protein</Form.Label>
-                <Col column md={2} className="ml-auto">
+                <Form.Label md={4} htmlFor="">Protein</Form.Label>
+                <Col md={2} className="ml-auto">
                   <Form.Control type="text" name="protein" onChange={this.onChange} value={this.state.protein} placeholder="g" />
                 </Col>
               </Form.Group>
 
               <fieldset className="fatset">
                 <Form.Group as={Row}>
-                  <Form.Label column md={4} htmlFor="">Total Fat</Form.Label>
-                  <Col column md={2} className="ml-auto">
+                  <Form.Label  md={4} htmlFor="">Total Fat</Form.Label>
+                  <Col  md={2} className="ml-auto">
                     <Form.Control type="text" name="fat" onChange={this.onChange} value={this.state.fat} placeholder="g" />
                   </Col>
                 </Form.Group>
 
                 <Form.Group as={Row}>
-                  <Form.Label column md={4}htmlFor="">Saturated Fat</Form.Label>
-                  <Col column md={2} className="ml-auto">
+                  <Form.Label  md={4}htmlFor="">Saturated Fat</Form.Label>
+                  <Col  md={2} className="ml-auto">
                     <Form.Control type="text" name="saturated" onChange={this.onChange} value={this.state.saturated} placeholder="g" />
                   </Col>
                 </Form.Group>
 
                 <Form.Group as={Row}>
-                  <Form.Label column md={4} htmlFor="" >Unsaturated Fat</Form.Label>
-                  <Col column md={2} className="ml-auto">
+                  <Form.Label  md={4} htmlFor="" >Unsaturated Fat</Form.Label>
+                  <Col  md={2} className="ml-auto">
                     <Form.Control type="text" name="unsaturated" onChange={this.onChange} value={this.state.unsaturated} placeholder="g" />
                   </Col>
                 </Form.Group>
               </fieldset>
               <Form.Group as={Row}>
-                  <Form.Label column md={4} htmlFor="" >Salt</Form.Label>
-                  <Col column md={2} className="ml-auto">
+                  <Form.Label  md={4} htmlFor="" >Salt</Form.Label>
+                  <Col  md={2} className="ml-auto">
                     <Form.Control type="text" name="salt" onChange={this.onChange} value={this.state.salt} placeholder="g" />
                   </Col>
                 </Form.Group>
@@ -168,7 +169,7 @@ class AddFood extends React.Component {
         <Form.Group as={Row} className="pt-3">
           <Col md={10}>
             <Button className="mr-1" variant="success" onClick={this.onSubmit} >Add new food</Button>
-            <Button variant="danger" >Cancel</Button>
+            <Link to="/addmeal"><Button variant="danger" >Cancel</Button></Link>
           </Col>
         </Form.Group>
         

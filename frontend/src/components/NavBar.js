@@ -15,8 +15,8 @@ export default class NavBar extends React.Component {
       
       link1 = <Nav.Item><Link to="/diary">Diary</Link><span className="sr-only"></span></Nav.Item>
       options = <NavDropdown variant="light" title={this.props.username} className="ml-auto mr-2" alignRight aria-labelledby="navbarDropdownMenuLink">
-                  <NavDropdown.Item>
-                    <Button variant="danger" onClick={this.props.onLogout}>Logout </Button>
+                  <NavDropdown.Item onClick={this.props.onLogout}>
+                    Logout
                   </NavDropdown.Item>
                 </NavDropdown>
     }
