@@ -196,6 +196,7 @@ class App extends React.Component {
 		fetch("/api/meal/"+id,request).then(response => {
 			this.setLoadingState(false);
       if(response.ok) {
+        this.getMeals();
         console.log("Meal removed:", {id});
         
 			} else {
@@ -265,6 +266,7 @@ class App extends React.Component {
     tempDate.setDate(this.state.date.getDate()+offset);
     this.setState({date:tempDate});
     this.saveToStorage();
+    this.getMeals();
   }
 
   render() {

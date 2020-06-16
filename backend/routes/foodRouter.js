@@ -33,9 +33,9 @@ router.get("/diary", function(req,res) {
   
   let tempList = [];
 	for(let i=0;i<mealDb.length;i++) {
-    console.log("headers.mealdate: " + req.headers.mealdate.substring(0,9));
-    console.log("db.date: " + mealDb[i].date.substring(0,9));
-		if(req.session.username === mealDb[i].owner && req.headers.mealdate.substring(0,9) === mealDb[i].date.substring(0,9)) {
+    console.log("headers.mealdate: " + req.headers.mealdate.substring(0,10));
+    console.log("db.date: " + mealDb[i].date.substring(0,10));
+		if(req.session.username === mealDb[i].owner && req.headers.mealdate.substring(0,10) === mealDb[i].date.substring(0,10)) {
 			tempList.push(mealDb[i]);
 		}
   }
