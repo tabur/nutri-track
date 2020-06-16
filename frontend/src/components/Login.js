@@ -35,18 +35,20 @@ export default class Login extends React.Component {
 
   render() {
     return(
-      <Row>
-        <Col md={3}></Col>
+      <Row className="pt-3">
+        <Col md={4}></Col>
         <Col>
         <Form onSubmit={this.onLogin}>
           <Form.Label>Login</Form.Label>
           
-          <Form.Control type="text" name="username" value={this.state.username} onChange={this.onChange} placeholder="Email" />
-          <Form.Control type="password" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" />
+          <Form.Control type="text" name="username" value={this.state.username} onChange={this.onChange} placeholder="Username" />
+          <div className="pt-1">
+            <Form.Control type="password" name="password" value={this.state.password} onChange={this.onChange} placeholder="Password" />
+          </div>
           <div className="pt-2"><Button type="submit">Login</Button></div>
         </Form>
         </Col>
-        <Col md={3}></Col>
+        <Col md={4}></Col>
       </Row>
     )
   }
